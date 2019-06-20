@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome to shopFashion');
+    return view('layout');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('/');
+Route::get('index','HomeController@index')->name('index');
