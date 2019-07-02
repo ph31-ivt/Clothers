@@ -2,7 +2,6 @@
 @section('title','Show')
 @section('content')
 
-
 <div class="content">
 	<div class="container-fluid">
 		<div class="row">
@@ -52,12 +51,6 @@
 				</div>
 			</div>
 
-
-
-
-
-
-
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -93,9 +86,5 @@
 
 		</div>
 	</div>
-
-
-
-
 
 	@endsection

@@ -2,9 +2,6 @@
 @section('title','Category')
 @section('content')
 
-
-
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -49,7 +46,6 @@
 </div>
 </div>
 </div>
-
 
 <footer class="footer">
     <div class="container-fluid">

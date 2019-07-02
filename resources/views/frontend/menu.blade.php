@@ -1,7 +1,8 @@
 <div class="wrapper_top_w3layouts">
 	<div class="header_agileits">
 		<div class="logo inner_page_log">
-			<h1><a class="navbar-brand" href="index.html"><span>Downy</span> <i>Shoes</i></a></h1>
+			<h1><a class="navbar-brand" href="index.html"><span>Shop</span> <i>Clothers</i>
+			</a></h1>
 		</div>
 		<div class="overlay overlay-contentpush">
 			<button type="button" class="overlay-close"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -10,7 +11,7 @@
 					<li><a href="{{route('index')}}" class="active">Home</a></li>
 					<li><a href="{{route('about')}}">About</a></li>
 					<li><a href="{{route('shop')}}">Shop Now</a></li>
-					<li><a href="{{route('contact')}}">Contact</a></li>
+					{{-- <li><a href="{{route('contact')}}">Contact</a></li> --}}
 					@if(Auth::check())
 					<li><a href="{{route('logout')}}">Logout</a></li>
 					<li><b style="color:red"><i>Hello {{Auth::user()->username}}!</i></b><br>
@@ -27,7 +28,7 @@
 
 		<!-- cart details -->
 		<div class="top_nav_right">
-			@include('frontend.cart')
+			{{-- @include('frontend.cart') --}}
 	</div>
 		</div>
 	</div>
@@ -41,12 +42,8 @@
 	</div>
 	<div id="cd-search" class="cd-search">
 		
-			<input type="text" class="form-controller" id="search" name="search" placeholder="Click enter after typing...">
-				
-			</input>
-			
-	
+			<input type="text" class="form-controller" id="search" name="search" placeholder="Click enter after typing..." />
 	</div>
 </div>
 
-	<!-- //search -->
+<!-- //search -->

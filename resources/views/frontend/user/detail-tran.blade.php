@@ -1,8 +1,8 @@
 @extends('frontend.user.layout')
 @section('title','Transaction Details')
 @section('content')
-<link rel="stylesheet" href="{{asset('lib/public/css/TimeCircles.css')}}" />
-<script type="text/javascript" src="{{asset('lib/public/js/TimeCircles.js')}}"></script>
+<link rel="stylesheet" href="{{asset('css/TimeCircles.css')}}" />
+<script type="text/javascript" src="{{asset('js/TimeCircles.js')}}"></script>
 
 <div class="wrapper">
 	<h3 class="text-center">Hóa đơn chi tiết</h3>
@@ -13,9 +13,9 @@
 	?>
 	<div id="CountDownTimer" data-date="{{date('M d, Y h:i:s', $date)}}" style="width: 500px; height: 150px;margin:0 auto"></div>Trong vòng 5 ngày hàng sẽ được chuyển đến tận nơi!
 	@elseif($order[0]['status']==2)
-	<div class="row "><img src="{{asset('lib/public/images/error.png')}}" alt="" width="100px" class="img-responsive center-block"><p class="text-center" style="font-size:20px;font-weight: bold">Giao hàng thất bại hoặc bạn đã hủy đơn đặt hàng</p></div>
+	<div class="row "><img src="{{asset('images/error.png')}}" alt="" width="100px" class="img-responsive center-block"><p class="text-center" style="font-size:20px;font-weight: bold">Giao hàng thất bại hoặc bạn đã hủy đơn đặt hàng</p></div>
 	@else
-	<div class="row "><img src="{{asset('lib/public/images/success.png')}}" alt="" width="100px" class="img-responsive center-block"><p class="text-center" style="font-size:20px;font-weight: bold">Đã giao hàng thành công</p></div>
+	<div class="row "><img src="{{asset('images/success.png')}}" alt="" width="100px" class="img-responsive center-block"><p class="text-center" style="font-size:20px;font-weight: bold">Đã giao hàng thành công</p></div>
 	@endif
 	<table class="table table-striped">
 		<thead>
@@ -33,7 +33,7 @@
 			@foreach($order[0]['orderdetails'] as $val)
 			<tr>
 				<th scope="row">{{$i}}</th>
-				<td><img src="{{asset('lib/public/images_product')}}/{{$val['product']['image']}}" class="img-responsive zoom"  width="100px" title="Nhấn để phóng to ảnh">
+				<td><img src="{{asset('images_product')}}/{{$val['product']['image']}}" class="img-responsive zoom"  width="100px" title="Nhấn để phóng to ảnh">
 					<div id="overlay"></div>
 				</td>
 				<td>{{$val['product']['name']}}</td>

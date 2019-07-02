@@ -2,9 +2,6 @@
 @section('title','Create Image')
 @section('content')
 
-
-
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">

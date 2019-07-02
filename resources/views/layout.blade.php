@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
 	<title>@yield('title')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,12 +16,12 @@
 		}
 	</script>
 
-	<link href="{{asset('public/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{asset('lib/public/css/shop.css')}}" type="text/css" media="screen" property="" />
-	<link href="{{asset('public/css/style7.css')}}" rel="stylesheet" type="text/css" media="all" />
-	<link href="{{asset('public/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{asset('css/shop.css')}}" type="text/css" media="screen" property="" />
+	<link href="{{asset('css/style7.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome-icons -->
-	<link href="{{asset('public/css/font-awesome.css')}}" rel="stylesheet">
+	<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
 	@yield('css')
 
 	<!-- //font-awesome-icons -->
@@ -37,7 +37,7 @@
 	@yield('content')
 	<div class="mid_slider_w3lsagile">
 		<div class="col-md-3 mid_slider_text">
-			<h5>Some More Shoes</h5>
+			<h5>Some More Clothers</h5>
 		</div>
 		<div class="col-md-9 mid_slider_info">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -52,64 +52,64 @@
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>
 					<div class="item active">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g5.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g5.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g6.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g6.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="{{asset('public/images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="{{asset('images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{asset('images/g1.jpg')}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{asset('images/g2.jpg')}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{asset('images/g3.jpg')}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{asset('images/g4.jpg')}}" alt="Image" style="max-width:100%;"></div>
 							</div>
 						</div>
 					</div>
@@ -132,7 +132,7 @@
 	<div class="footer_agileinfo_w3">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-3 footer-left">
-				<h2><a href="{{url('/')}}"><span>D</span>owny Shoes </a></h2>
+				<h2><a href="{{url('/')}}"><span>S</span>hop Clothers </a></h2>
 				<p>Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
 				<ul class="social-nav model-3d-0 footer-social social two">
 					<li>
@@ -142,13 +142,13 @@
 						</a>
 					</li>
 					<li>
-						<a href="https://twitter.com/dangnam91" class="twitter" target="blank">
+						<a href="https://twitter.com/namdangnguyen09" class="twitter" target="blank">
 							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
 							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.instagram.com/dangnam91/" class="instagram" target="blank">
+						<a href="https://www.instagram.com/namdangnguyen09/" class="instagram" target="blank">
 							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
 							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
 						</a>
@@ -169,7 +169,7 @@
 						<li><a href="{{url('about')}}">About</a></li>
 						<li><a href="404.html">Services</a></li>
 						<li><a href="">Clothers Codes</a></li>
-						<li><a href="{{route('contact')}}">Contact</a></li>
+						{{-- <li><a href="{{route('contact')}}">Contact</a></li> --}}
 					</ul>
 				</div>
 
@@ -192,7 +192,7 @@
 							</div>
 							<div class="address-right">
 								<h6>Email Address</h6>
-								<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+								<p>Email :<a href="mailto:namdangnguyen09@gmail.com"> mail@gmail.com</a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -212,15 +212,15 @@
 				<div class="col-md-3 sign-gd flickr-post">
 					<h4>Flickr <span>Posts</span></h4>
 					<ul>
-						<li><a href="single.html"><img src="{{asset('public/images/t1.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t3.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t4.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t1.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t3.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="{{asset('public/images/t4.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t1.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t3.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t4.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t1.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t4.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t2.jpg')}}" alt=" " class="img-responsive" /></a></li>
+						<li><a href="single.html"><img src="{{asset('images/t1.jpg')}}" alt=" " class="img-responsive" /></a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -238,17 +238,17 @@
 </a>
 @endif
 
-<script type="text/javascript" src="{{asset('public/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 <!-- //js -->
 <!-- /nav -->
-<script src="{{asset('public/js/modernizr-2.6.2.min.js')}}"></script>
-<script src="{{asset('public/js/classie.js')}}"></script>
-<script src="{{asset('public/js/demo1.js')}}"></script>
+<script src="{{asset('js/modernizr-2.6.2.min.js')}}"></script>
+<script src="{{asset('js/classie.js')}}"></script>
+<script src="{{asset('js/demo1.js')}}"></script>
 <!-- //nav -->
-<script src="{{asset('public/js/search.js')}}"></script>
-<script src="{{asset('public/js/responsiveslides.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/bootstrap-3.1.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/easy-responsive-tabs.js')}}"></script>
+<script src="{{asset('js/search.js')}}"></script>
+<script src="{{asset('js/responsiveslides.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap-3.1.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/easy-responsive-tabs.js')}}"></script>
 
 <script>
 	$(function () {
@@ -267,9 +267,9 @@
 		});
 	});
 </script>
-<script type="text/javascript" src="{{asset('public/js/move-top.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/easing.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/jquery.flexslider.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.flexslider.js')}}"></script>
 
 <script type="text/javascript">
 	jQuery(document).ready(function ($) {
@@ -330,7 +330,7 @@
 							html+='<div class="sbmincart-details-price"><span class="sbmincart-price">$'+value.price*value.qty+'</span></div></li>';
 							html1+='<tr class="rem1">';
 							html1+='<td class="invert">'+i+'</td>';
-							html1+='<td class="invert-image" style="width: 40%;"><a href=""><img src="http://localhost/FashionTT/lib/public/images_product/'+value.image+'" class="img-responsive"></a></td>';
+							html1+='<td class="invert-image" style="width: 40%;"><a href=""><img src="http://localhost/Shop_Clothes/public/images/'+value.image+'" class="img-responsive"></a></td>';
 							html1+='<td class="invert"><div class="quantity"><div class="quantity-select"><input class="value sbmincart-quantity" type="text" data-id="'+value.id+'" value="'+value.qty+'" autocomplete="off" max="5"></div></div></td>';
 							html1+='<td class="invert">'+value.name+'</td><td class="invert money1" data-idx="'+value.id+'">$'+value.price*value.qty+'</td><td class="invert"><div class="rem"><div class="close1 remove" data-sbmincart-idx="'+value.id+'" > </div></div></td>';
 							html1+='</tr>';
@@ -425,7 +425,7 @@
 						html+='<div class="sbmincart-details-price"><span class="sbmincart-price">$'+value.price*value.qty+'</span></div></li>';
 						html1+='<tr class="rem1">';
 						html1+='<td class="invert">1</td>';
-						html1+='<td class="invert-image" style="width: 40%;"><a href=""><img src="http://localhost/FashionTT/lib/public/images_product/'+value.image+'" class="img-responsive"></a></td>';
+						html1+='<td class="invert-image" style="width: 40%;"><a href=""><img src="http://localhost/Shop_Clothers/public/images_product/'+value.image+'" class="img-responsive"></a></td>';
 						html1+='<td class="invert"><div class="quantity"><div class="quantity-select"><input class="value sbmincart-quantity" type="text" data-id="'+value.id+'" value="'+value.qty+'" autocomplete="off" max="5"></div></div></td>';
 						html1+='<td class="invert">'+value.name+'</td><td class="invert money1" data-idx="'+value.id+'">$'+value.price*value.qty+'</td><td class="invert"><div class="rem"><div class="close1 remove"> </div></div></td>';
 						html1+='</tr>';
@@ -449,7 +449,7 @@
 			var search = $(this).val();
 			console.log(search);
 			product ='';
-			var url_image="{{asset('public/images_product/')}}";
+			var url_image="{{asset('images_product/')}}";
 			$.ajax({
 				type : 'POST',
 				dataType : "JSON",
@@ -464,11 +464,11 @@
 							product+='<div class="col-md-4 product-men"><div class="product-shoe-info shoe"><div class="men-pro-item"><div class="men-thumb-item"><img src="'+url_image+'/'+value.image+'" alt="" style="height: 235.844px"><div class="men-cart-pro"><div class="inner-men-cart-pro"><a href="{{url('single')}}'+value.id+'" class="link-product-add-cart" style="">Quick View</a></div></div></div><span class="product-new-top">New</span></div><div class="item-info-product"><h4><a href="single.html">'+value.name+'</a></h4><div class="info-product-price"><div class="grid_meta"><div class="product_price"><div class="grid-price "><span class="money ">$'+value.price+'</span></div></div><ul class="stars"><li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li><li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li><li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li><li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li><li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li></ul></div><div class="shoe single-item hvr-outline-out"><button type="button"  value="'+value.id+'" class="shoe-cart pshoe-cart addProduct"><i class="fa fa-cart-plus" aria-hidden="true"></i></button></div></div><div class="clearfix"></div></div></div></div></div>';
 						});
 						product+='<div class="clearfix"></div>';
-											//$("").hide();	
-											$('.product-sec1').html(product);
-										}
-									}
-								});
+						//$("").hide();	
+						$('.product-sec1').html(product);
+					}
+				}
+			});
 		});
 	});
 setTimeout(function() {
@@ -503,10 +503,3 @@ setTimeout(function() {
 @yield('js')
 
 </html>
-
-
-
-
-
-
-

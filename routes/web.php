@@ -14,25 +14,19 @@
 Route::get('/','HomeController@index')->name('/');
 Route::get('index','HomeController@index')->name('index');
 
-Route::get('ADMIN',function(){
-	if (Auth::check()) {
-		if (\Auth::user()->id==1) {
-			return redirect()->route('admin-profile');
-		}else{
-			return	redirect()->route('user');
-		}
-	}else{
-		return	redirect()->route('login');
-	}
-});
-
-Route::get('login','admin\LoginController@getLogin')->middleware('checkrole')->name('login');
+Route::get('login','admin\LoginController@getLogin')->name('login');
 Route::POST('login','admin\LoginController@postLogin')->name('logined');
 
 Route::get('register','admin\LoginController@getRegister')->name('register');
 Route::POST('register','admin\LoginController@postRegister')->name('registered');
 
 Route::get('logout','admin\LoginController@getLogout')->name('logout');
+
+Route::POST('shopping','ShoppingCartController@addProduct')->name('shopping');
+Route::POST('delete','ShoppingCartController@deleteProduct')->name('delete');
+Route::POST('update','ShoppingCartController@updateProduct')->name('update');
+Route::POST('search','ShoppingCartController@searchProduct')->name('search');
+Route::POST('comment','admin\CommentController@comment')->name('comment');
 
 Route::get('shop','HomeController@shop')->name('shop');
 Route::any('list-search','HomeController@postSearch')->name('list-search');
@@ -41,10 +35,9 @@ Route::POST('checkout','CheckoutController@postCheckout')->name('checkout');
 Route::get('payment','CheckoutController@payment')->name('payment');
 Route::POST('sendmail','CheckoutController@sendMail')->name('sendmail');
 Route::get('single/{id}','HomeController@single')->name('single');
-Route::get('contact', 'ContactController@index')->name('contact');
-Route::post('contacted','ContactController@contact')->name('contacted');
+// Route::get('contact', 'ContactController@index')->name('contact');
+// Route::post('contacted','ContactController@contact')->name('contacted');
 Route::view('about', 'frontend.about')->name('about');
-
 
 Route::group(['middleware' => ['auth']], function () {	
 	Route::group(['prefix' => 'admin','middleware'=>'admin'], function(){
@@ -91,18 +84,18 @@ Route::group(['middleware' => ['auth']], function () {
 			Route::put('/{id}/update', 'admin\OrderController@update')->name('order-update');
 			Route::get('/{id}/comfirm', 'admin\OrderController@confirm')->name('order-comfirm');
 			Route::group(['prefix' =>'orderDetail'], function(){
-				Route::get('/{id}/orderdetail', 'admin\OrderDetailController@show')->name('orderDetail-show');
+			Route::get('/{id}/orderdetail', 'admin\OrderDetailController@show')->name('orderDetail-show');
 			});
 		});
     });	
-    Route::group(['prefix' => 'user','middleware'=>'user'], function(){
-		Route::get('user','user\UserController@index')->name('user');
-		Route::get('/','user\UserController@index')->name('user');
-		Route::POST('imageUP','user\UserController@upload')->name('imageUP');
-		Route::get('refreshcaptcha', 'user\UserController@refreshCaptcha')->name('refreshcaptcha');
-		Route::POST('changed', 'user\UserController@change')->name('changed');
-		Route::get('lis-transaction','user\UserController@listtran')->name('list-tran');
-		Route::get('transaction-details/{id}','user\UserController@detail')->name('transaction-details');
-    });	
+    // Route::group(['prefix' => 'user','middleware'=>'user'], function(){
+	// 	Route::get('user','user\UserController@index')->name('user');
+	// 	Route::get('/','user\UserController@index')->name('user');
+	// 	Route::POST('imageUP','user\UserController@upload')->name('imageUP');
+	// 	Route::get('refreshcaptcha', 'user\UserController@refreshCaptcha')->name('refreshcaptcha');
+	// 	Route::POST('changed', 'user\UserController@change')->name('changed');
+	// 	Route::get('lis-transaction','user\UserController@listtran')->name('list-tran');
+	// 	Route::get('transaction-details/{id}','user\UserController@detail')->name('transaction-details');
+    // });	
     
 });

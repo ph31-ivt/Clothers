@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="zxx" >
 
 <head>
 	<meta charset="UTF-8">
 	<title>Login & Sign Up</title>
-	<link href="{{asset('lib/public/css/login.css')}}" rel="stylesheet" id="bootstrap-css">
-	
-
+	<link href="{{asset('css/login.css')}}" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
 	<div class="wrapper fadeInDown">

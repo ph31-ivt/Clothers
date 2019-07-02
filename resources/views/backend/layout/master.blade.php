@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zxx">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -12,18 +12,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap core CSS     -->
-    <link href="{{asset('lib/public/admin/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="{{asset('lib/public/admin/css/animate.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('admin/css/animate.min.css')}}" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="{{asset('lib/public/admin/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
+    <link href="{{asset('admin/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <script src="{{ asset('lib/public/admin/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
 
 </head>
 <body>
@@ -69,7 +69,6 @@
                         </a>
                     </li>
                     <li>
-                        
                     </li>
                 </ul>
             </div>
@@ -106,8 +105,6 @@
 </nav>
 @yield('content')
 </body>
-
-
 <script type="text/javascript">
         function showSearch() {
         var x = document.getElementById("search");

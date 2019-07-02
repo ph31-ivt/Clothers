@@ -20,7 +20,8 @@ class CreateImagesTable extends Migration
             $table->integer('product_id');
             $table->integer('status')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));        });
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));        
+        });
     }
 
     /**

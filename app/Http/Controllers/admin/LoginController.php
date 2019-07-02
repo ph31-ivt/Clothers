@@ -12,6 +12,7 @@ class LoginController extends Controller
 {
 	public function getLogin()
 	{
+
 		return view('backend.login');
 	}
 	public function postLogin(LoginRequest $request)
@@ -25,12 +26,12 @@ class LoginController extends Controller
 		}
 	}
 
-
 	public function getLogout()
 	{
 		Auth::logout();
 		return redirect()->route('index');
 	}
+	
 	public function getRegister()
 	{
 		return view('backend.register');

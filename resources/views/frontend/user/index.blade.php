@@ -55,7 +55,7 @@
 		<div class="col-md-6">
 			<form action="{{route('imageUP')}}" method="POST" enctype="multipart/form-data">
 				@csrf
-				<img src="{{asset('lib/public/images/')}}/
+				<img src="{{asset('images/')}}/
 				@if(Auth::user()->avatar!=null)
 				{{Auth::user()->avatar}}
 				@else

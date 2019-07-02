@@ -2,10 +2,10 @@
 @section('title', 'About')
 @section('content')
 @section('css')
-<link rel="stylesheet" href="{{asset('lib/public/css/flexslider.css')}}" type="text/css" media="screen" />
-<link href="{{asset('lib/public/css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+<link href="{{asset('css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css' />
 <!-- Owl-carousel-CSS -->
-<link rel="stylesheet" type="text/css" href="{{asset('lib/public/css/jquery-ui1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui1.css')}}">
 @endsection
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
@@ -13,7 +13,7 @@
 			<p class="head_para">Add Some Description</p>
 			<div class="inner_section_w3ls">
 				<div class="col-md-6 news-left">
-					<img src="{{asset('lib/public/images/ab.jpg')}}" alt=" " class="img-responsive">
+					<img src="{{asset('images/ab.jpg')}}" alt=" " class="img-responsive">
 				</div>
 				<div class="col-md-6 news-right">
 					<h4>Welcome to our ThuongThienShoes</h4>

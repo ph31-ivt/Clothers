@@ -2,7 +2,6 @@
 @section('title','Order')
 @section('content')
 
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -62,8 +61,6 @@
                                             @method("DELETE")
                                             <button type="submid" class="btn">Delete</button>
                                         </form> --}}
-
-
                                     </td>
                                 </tr>
                                 @endforeach
@@ -115,8 +112,6 @@
                                             @method("DELETE")
                                             <button type="submid" class="btn">Delete</button>
                                         </form> --}}
-
-
                                     </td>
                                 </tr>
                                 @endforeach
