@@ -24,31 +24,36 @@ class EditProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'name'=>'required|unique:products,name,'.$this->id,
-            'price'=>'required',
-            'sale'=>'required',
-            'description' => 'required|min:100|max:2000',
-            'image' => '|image|mimes:jpeg,png,jpg|max:2048',
-            'ImageProductDetail.*'=>'|image|mimes:jpeg,png,jpg|max:2048',
+            'name'=> 'required|unique:products,name,'.$this->segment(3).',id',
+            'price'=> 'required|numeric|max:50000000|min:1',
+            'size'=> 'required',
+            'sale' => 'numeric|max:100|min:0',            
+            'category_id'=> 'required',
+            'brand_id'=> 'required',
+            'img'=>'image|mimes:jpeg,png|max:2048',
+            'img_description.*'=>'image|mimes:jpeg,png|max:2048',
         ];
     }
-     public function messages()
-    {
+    public function messages(){
         return [
-            'name.required' => 'Bạn chưa điền tên Product',
-            'name.unique'=>'Tên sản phẩm mục bị trùng',
-            'price.required'  => 'Mời nhập giá cho sản phẩm',
-            'sale.required' =>'Bạn chưa nhập giảm giá',
-            'description.required' =>'Bạn chưa nhập mô tả',
-            'description.min' =>'Mô tả ít nhất 100 từ',
-            'description.max' =>'Mô tả ít nhất 2000 từ',
-            'image.image' =>'Ảnh không hợp lệ',
-            'image.mimes' =>'Định dạng ảnh phải là: jpeg,png,jpg',
-            'image.max' =>'Ảnh không được quá 2MB',
-            'ImageProductDetail.*.image' =>'Ảnh mô tả không hợp lệ',
-            'ImageProductDetail.*.mimes' =>'Định dạng ảnh mô tả phải là: jpeg,png,jpg',
-            'ImageProductDetail.*.max' =>'Ảnh không được quá 2MB',
+            'name.required' => 'Bạn chưa điền tên sản phẩm!',
+            'name.unique' => 'Tên sản phẩm đã bị trùng!',
+            'price.required' => 'Bạn chưa điền giá sản phẩm!',
+            'price.numeric' => 'Giá sản phẩm phải là số nguyên!',
+            'price.max' => 'Giá sản phẩm không được lớn hơn 50,000,000đ',
+            'price.min' => 'Giá sản phẩm phải lớn hơn 0',
+            'size.required' => 'Bạn chưa chọn kích thước sản phẩm!',
+            'sale.numeric' => 'Khuyến mãi phải là số!',
+            'sale.max' => 'Khuyến mãi phải nhỏ hơn 100%',
+            'sale.min' => 'Khuyến mãi không thể âm!',
+            'category_id.required' => 'Bạn chưa chọn danh mục sản phẩm!',
+            'brand_id.required' => 'Bạn chưa chọn hãng sản phẩm!',
+            'img.image'=>'File phải là hình ảnh!',
+            'img.mimes'=>'Ảnh phải có đuôi là jpg hoặc png',
+            'img.max'=>'Ảnh chỉ có kích thước tối đa là 2MB !',
+            'img_description.*.image'=>'File phải là hình ảnh!',
+            'img_description.*.mimes'=>'Ảnh phải có đuôi là jpg hoặc png',
+            'img_description.*.max'=>'Ảnh chỉ có kích thước tối đa là 2MB !',
         ];
     }
 }

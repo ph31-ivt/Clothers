@@ -24,21 +24,22 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
+            'name'=> 'required',
+            'email'=>'required|email',
             'address'=>'required',
-            'country'=>'required',
-            'cty'    =>'required',
-            'phone'  =>'required|numeric|min:10'
+            'phone' =>'required|numeric',
+            'payment' => 'required',
         ];
     }
-    public function messages()
-    {
-       return [
-        'address.required'=>'Vui lòng nhập địa chỉ hiện tại của bạn',
-        'country.required'=>'Vui lòng nhập quốc gia hiện tại của bạn',
-        'cty.required'    =>'Vui lòng nhập thành phố hiện tại của bạn',
-        'phone.required'  =>'Vui lòng nhập số điện thoại của bạn',
-        'phone.numeric'  =>'Số điện thoại không hợp lệ',
-        'phone.min'  =>'Đây không phải là số điện thoại'
-    ];   
+    public function messages(){
+        return [
+            'name.required' => 'Bạn chưa nhập tên!',
+            'email.required' => 'Bạn chưa nhập email!',
+            'email.email' => 'Email sai định dạng!',
+            'address.required' => 'Bạn chưa nhập địa chỉ!',
+            'phone.required' => 'Bạn chưa nhập số điện thoại!',
+            'phone.numeric' => 'Số điện thoại phải là số!',
+            'payment.required' => 'Bạn chưa chọn phương thức thanh toán!',
+        ];
     }
 }

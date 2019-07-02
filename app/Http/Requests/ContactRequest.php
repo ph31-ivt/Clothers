@@ -24,25 +24,21 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|regex:/[^a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]/u',
-            'phone'=>'required|numeric|min:11',
             'email'=>'required|email',
-            'subject'=>'required',
-            'message'=>'required|max:2000'
+            'name'=>'required',
+            'phone'=> 'required|numeric|min:10',
+            'content'=>'required',
         ];
     }
-    public function messages()
-    {
+    public function messages(){
         return [
-            'name.required'=>'Bạn chưa nhập tên',
-        'name.regex'=>'Tên không hợp lệ',
-        'phone.required'=>'Bạn chưa nhập số điện thoại',
-        'phone.numeric.min'=>'Số điện thoại không hợp lệ',
-        'email.required'=>'Bạn chưa nhập email',
-        'email.email'=>'Email không hợp lệ',
-        'subject.required'=>'Bạn chưa nhập Subject',
-        'message.required'=>'Bạn chưa nhập tin nhắn',
-        'message.Max'=>'Tin nhắn không được quá 2000 từ',
+            'email.required'=>'Bạn chưa nhập Email',
+            'email.email'=>'Email chưa đúng định dạng',
+            'name.required'=>'Bạn chưa nhập tên người dùng',
+            'phone.required'=>'Bạn chưa nhập số điện thoại.',
+            'phone.numeric'=>'Số điện thoại phải là số.',
+            'phone.min'=>'Số điện thoại phải từ 10 - 11 chữ số.',
+            'content.required'=>'Bạn chưa nhập nôi dung.',
         ];
     }
 }

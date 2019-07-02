@@ -51,6 +51,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
+        'CheckProfile' => \App\Http\Middleware\CheckProfile::class,
+        'CheckLogedIn' => \App\Http\Middleware\CheckLogedIn::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -60,9 +63,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'checkrole' => \App\Http\Middleware\CheckLevelMiddleware::class,
-        'user'=>\App\Http\Middleware\CheckUser::class,
-        'admin'=>\App\Http\Middleware\CheckAdmin::class,
     ];
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use App\User;
 
 class CheckAdmin
 {
@@ -15,13 +17,18 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()&&Auth::user()->role_id==1){
-            // Nếu đã chứng thực và level ==1 (là admin)
-            return $next($request);
+        if (Auth::guest()) {
+            return redirect()->intended('login')->with('status','Bạn phải đăng nhập tài khoản admin mới được quyền vào chức năng này!');
         }
-        else{
-            return redirect()->route('login');
-           // Nếu không phải chuyển hướng về trang chủ
+        
+        if (Auth::check()) {
+        
+          /* dd(User::find((Auth::user()->id))->role->name);*/
+            if ((User::find((Auth::user()->id))->role->name) == 'user') {
+               return redirect()->route('alert-form');
+            }
+            
         }
+        return $next($request);
     }
 }

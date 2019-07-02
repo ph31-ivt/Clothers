@@ -24,15 +24,17 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-           'username'=>'required',
-           'password'=>'required'
-       ];
-   }
-   public function messages()
-   {
-    return [
-        'username.required' => 'Bạn chưa điền tên đăng nhập',
-        'password.required'  => 'Bạn chưa điền tên mật khẩu',
-    ];
-}
+            'email'=>'required|email',
+            'password'=>'required|min:6|max:16'
+        ];
+    }
+    public function messages(){
+        return [
+            'email.required'=>'Bạn chưa nhập Email',
+            'email.email'=>'Email chưa đúng định dạng',
+            'password.required'=>'Bạn chưa nhập Password',
+            'password.min'=>'Password phải ít nhất 6 ký tự',
+            'password.max'=> 'Password không quá 16 ký tự'
+        ];
+    }
 }
