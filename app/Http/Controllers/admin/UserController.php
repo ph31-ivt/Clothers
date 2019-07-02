@@ -1,12 +1,14 @@
 <?php
+
 namespace App\Http\Controllers\admin;
 
-use App\Models\User;
-use App\Models\Role;
-use File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\AddUserRequest;
+use App\Http\Requests\EditUserRequest;
+use App\Http\Requests\NewPasswordRequest;
+use App\User;
+use Hash;
 
 class UserController extends Controller
 {
@@ -17,26 +19,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        if (request()->search) 
-        {
-          $query=request()->search;
-          $user = User::where('username', 'like', '%'.$query.'%')
-          ->orWhere('email', 'like', '%'.$query.'%')
-          ->orderBy('id', 'desc')->get();
-          $search=1;
-        }else{
-        $user=$this->ordertable('App\Models\User','role');
-        $search=2;
-        }
-        return view('backend.user.list', compact('user','search'));
+        $data['users'] = User::orderBy('id','desc')->paginate(10);
+        return view('admin.user.admin',$data);
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //
-        $roleId = Role::pluck('id','name');
-        return view('backend.user.create', compact('roleId'));
+        return view('admin.user.add');
     }
 
     /**
@@ -45,88 +39,138 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(AddUserRequest $request)
     {
-        if ($request->hasFile('avatar')) {
-          $path = public_path('images_product/');
-          $image = $request->file('avatar');
-          $name = md5(time().$image->getClientOriginalName()).'.'.$image->getClientOriginalExtension();
-          $image->move($path,$name);    
-      }else{
-        $name='';
+        $data = $request->except('_token','submit');
+        $user = User::create($data);
+        if ($user) {
+            return redirect()->route('user-admin')->with('status', trans('message.user_create_susscess'));
+        }else{
+            return redirect()->route('user-admin')->with('status',trans('message.user_create_fail'));
+        }
     }
-    $user = User::create(
-        [
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'avatar' => $name,
-            'role_id' => 2,
-            'email' => $request->email,
-        ]
-    );
 
-    return  redirect()->route('user-list')->with(['class'=>'success','message'=>'Tạo USER thành công']);
-}
+    public function newPassword(NewPasswordRequest $request, $id)
+    {
+        $data = $request->only('password');
+        $data['password'] = Hash::make($request->password);
+        $user = User::where('id',$id)->update($data);
+        if ($user) {
+            return redirect()->route('user-admin')->with('status', trans('message.user_password_susscess'));
+        }else{
+            return redirect()->route('user-admin')->with('status', trans('message.user_password_fail'));
+        }
+    }
     /**
      * Display the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $category)
+    public function showNewPassword($id)
     {
-        //
+        return view('admin.user.newpass',compact('id'));
     }
 
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        //
-        $user = User::with('role')->find($id);
-        $roleId = Role::pluck('id','name');
-        return view('backend.user.edit', compact('user', 'roleId'));
+        $data['users'] = User::find($id);
+        return view('admin.user.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(EditUserRequest $request, $id)
     {
-        //
-        $user = User::find($id);
-        $path = public_path('images_product/');
-        $nameimgcurt=$user->avatar;
-        if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-            $name = md5($image->getClientOriginalName()).'.'.$image->getClientOriginalExtension();
-            $user->avatar=$name;
-            $imgcur=$path.$nameimgcurt;
-            $image->move($path,$name);
-            if(File::exists($imgcur)) {
-                File::delete($imgcur);
-            }
+        //dd($request);
+        $data = $request->except('_token','submit','_method');
+        $data['password'] = Hash::make($request->password);
+        $user = User::where('id',$id)->update($data);
+        if ($user) {
+            return redirect()->route('user-admin')->with('status',trans('message.user_edit_susscess'));
+        }else{
+            return redirect()->route('user-admin')->with('status',trans('message.user_edit_fail'));
         }
-        $user->username=$request->username;
-        $user->email=$request->email;
-        $user->password=$request->password;
-        $user->role_id=$request->role_id; 
-        $user->save();
-        return  redirect()->route('user-list')->with(['class'=>'success','message'=>'Cập nhật thành công']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        User::destroy($id);
-        return  redirect()->route('user-list')->with(['class'=>'success','message'=>'Xóa thành công']);
+        $user = User::destroy($id);
+        if ($user) {
+            return redirect()->back()->with('status',trans('message.user_delete_susscess'));
+        }else{
+            return redirect()->back()->with('status',trans('message.user_delete_fail'));
+        }
+    }
+
+    public function searchUser(Request $request)
+    {
+        if($request->ajax())
+        {
+            $result = $request->search;
+            $result = str_replace(' ', '%', $result);
+            $users = User::where('name','like','%'.$result.'%')
+                        ->orWhere('email','like','%'.$result.'%')
+                        ->orderBy('id','desc')->get();
+            if (empty($users->toArray())) {
+                ?>
+                    <tr>
+                        <td colspan="4">Không tìm thấy tài khoản nào!</td>
+                    </tr>
+                <?php
+            }else{ 
+                foreach($users as $user){
+                    ?>
+                    <tr>
+                        <td><?php echo $user->id; ?></td>
+                        <td>
+                            <ul class="user-menu" style="margin-top: 0px;margin-right: 40%">
+                                <li class="dropdown pull-right">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #000"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg><?php echo $user->name; ?><span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="<?php echo route('show-new-password',$user->id); ?>"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Đổi mật khẩu</a></li>
+                                        <li><a href="<?php echo route('show-edit-user',$user->id); ?>"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Sửa thông tin</a></li>
+                                        <li>
+                                            <form action="<?php echo route('delete-user',$user->id); ?>" method="POST">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" style="background: #fff;border: none;"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Xóa tài khoản</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                        <td><?php echo $user->email; ?></td>
+                        <td><?php if($user->role_id == 2){ ?>
+                                <span class="btn-danger">SuperAdmin</span>
+                            <?php }else{ ?>
+                                <span class="btn-info">User</span>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                
+            }
+
+        }
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Category;
-use App\Models\Product;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+use App\Category;
+use App\Product;
+use App\Order;
+use App\Http\Requests\AddCategoryRequest;
+use App\Http\Requests\EditCategoryRequest;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -16,11 +18,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( )
+    public function index()
     {
-        //
-        $category = Category::orderBy('parent_id','asc')->paginate(10);
-        return view('backend.category.list', compact('category'));
+        $data['category_list'] = Category::all();
+        return view('admin.category.category',$data);
     }
 
     /**
@@ -30,10 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-       $list_cate = Category::where('parent_id',0)->get()->toArray();
-     // $parent = Category::select('id', 'name', 'parent_id')->get()->toArray();
-       return view('backend.category.create', compact('list_cate'));
-   }
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,68 +40,96 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $req)
+    public function store(AddCategoryRequest $request)
     {
+        try {
+                DB::beginTransaction();
+                $data = $request->all();
+                $data['slug'] = str_slug($data['name']);
+                $cate= Category::create($data);
+                DB::commit();
+                // session()->flash('status', 'Thêm danh mục thành công!')
+                return redirect()->route('category-admin')->with('status', trans('message.cate_create_susscess'));  
+            }catch (\Exception $ex) {
+            
+                return redirect()->back()->with('status', trans('message.cate_create_fail'));
+            
+            }
 
-        $category= new Category;
-        $data=$req->all();
-        $data['alias']=str_slug($req->name);
-        $category->create($data);
-        return redirect()->route('category-list')->with(['class'=>'success','message'=>'Tạo danh mục thành công']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Category $id)
-    // {
-    //     //
-    //     $datas = Product::with('cate')->where('category_id', $id)->get()->toArray();
-    //     return view('backend.category.show', compact('datas'));
-    // }
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-       $list_cate = Category::where('parent_id',0)->where('id','<>',$id)->get()->toArray();
-     //dd($list_cate);
-       $category = Category::find($id);
-       return view('backend.category.edit', compact('category','list_cate'));
-   }
+        $category = Category::find($id);
+        return view('admin.category.editcategory',compact('category'));
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {   
-        $request->validate(
-            ['name' => 'required|unique:categories,name,'.$id],
-            ['name.required' => 'Vui lòng nhập tên danh mục',
-            'name.unique' => 'Tên danh mục bị trùng',
-        ]);
+    public function update(EditCategoryRequest $request, $id)
+    {
         $category = Category::find($id);
-        $data=$request->all();
-        $data['alias']=str_slug($request->name);
-        $category->update($data);
-        return redirect()->route('category-list')->with(['class'=>'success','message'=>'Cập nhật danh mục thành công']);
-
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->description = $request->description;
+        if ($category->save()) {
+           return redirect()->route('category-admin')->with('status', trans('message.cate_edit_susscess'));
+        }else{
+            return redirect()->route('category-admin')->with('status', trans('message.cate_edit_susscess'));
+        }
+        
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        Category::destroy($id);
-        Category::where('parent_id',$id)->delete();
-        return redirect()->route('category-list')->with(['class'=>'success','message'=>'Xóa danh mục thành công']);
+
+        try{
+        DB::beginTransaction();
+            $category= Category::find($id);
+            foreach ($category->products()->get() as $item) {
+                $product = Product::find($item->id);
+                $product->productSizes()->delete();
+                $product->images()->delete();
+                $product->orders()->delete();
+                $product->orderDetails()->delete();
+                $product->comments()->delete();
+            }
+            $category->products()->delete();
+            $category->delete();
+            DB::commit();
+            return redirect()->back()->with('status', trans('message.cate_delete_susscess'));  
+        } catch (\Exception $ex) {
+            
+            return redirect()->back()->with('status', trans('message.cate_delete_fail'));
+            
+        }
     }
 }
